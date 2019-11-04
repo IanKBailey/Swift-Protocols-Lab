@@ -39,6 +39,58 @@ three instances of a `Human`, then create an array called people of type [`Human
 Create a new array called sortedPeople of type [`Human`] that is the people array sorted by age.
 
 </br> </br>
+```
+class Human: CustomStringConvertible, Equatable, Comparable{
+    static func < (lhs: Human, rhs: Human) -> Bool {
+        return lhs.age < rhs.age
+    }
+    
+    static func == (lhs: Human, rhs: Human) -> Bool {
+        return lhs.age == rhs.age && lhs.name == rhs.name
+    }
+    
+    var description: String {
+        return "Humans name is \(name) and they are \(age) years old"
+    }
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.age = age
+        self.name = name
+        
+    }
+}
+
+let ian = Human(name: "Ian", age: 29)
+let bailey = Human(name: "Bailey", age: 29)
+let imani = Human(name: "Imani", age: 25)
+let jamison = Human(name: "Jamison", age: 25)
+let ishmael = Human(name: "Ishmael", age: 5)
+
+
+print(ian)
+print(bailey)
+
+if ian == bailey {
+    print("They're the same")
+} else {
+    print("They're not the same")
+}
+
+if ian != bailey {
+    print("They're not the same")
+} else {
+    print("They're the same")
+}
+
+var people: [Human] = [ian, bailey, imani, jamison, ishmael]
+
+var sortedPeople = people.sorted()
+
+print(sortedPeople)
+
+```
 
 
 ## Question 2
@@ -56,7 +108,39 @@ and drive() should print "Begin pedaling!". Create an instance of Bike, print it
 then call drive().
 
 </br> </br>
+```
 
+protocol Vehicle {
+    var numberOfWheels: Int { get }
+    func drive ()
+}
+
+struct Car : Vehicle {
+    var numberOfWheels: Int = 4
+    
+    func drive() {
+        print("Vroom Vroom!")
+    }
+}
+
+let car = Car()
+print("the car has \(car.numberOfWheels) wheels")
+car.drive()
+
+struct Bike: Vehicle {
+    var numberOfWheels: Int = 2
+    
+    func drive() {
+        print("Begin pedaling!")
+    }
+
+}
+
+let bike = Bike()
+print("the bike has \(bike.numberOfWheels) wheels")
+bike.drive()
+
+```
 
 ## Question 3
 // Given the below two protocols, create a struct for penguin(a flightless bird) and an eagle.
