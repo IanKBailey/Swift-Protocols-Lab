@@ -157,7 +157,33 @@ protocol Flyable {
  var airspeedVelocity: Double { get }
 }
 ```
+```
+protocol Bird {
+ var name: String { get }
+ var canFly: Bool { get }
+}
 
+protocol Flyable {
+ var airspeedVelocity: Double { get }
+}
+
+struct Penguin : Bird {
+    var name: String = "Penguin"
+    var canFly: Bool = false
+
+}
+
+struct Eagle: Bird, Flyable {
+    var name: String = "Eagle"
+    
+    var canFly: Bool = true
+    
+    var airspeedVelocity: Double = 85
+    
+    
+}
+
+```
 </br> </br>
 
 ## Question 4
